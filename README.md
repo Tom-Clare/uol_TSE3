@@ -1,2 +1,2 @@
-# uol_TSE_chrome_plugin
-A chrome plugin that communicates with a remote server
+# uol_TSE3
+A fake news detection bot operable via a chrome plugin
