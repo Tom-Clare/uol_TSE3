@@ -8,15 +8,28 @@ $(document).ready(function() {
 
         $.ajax({
             type    : 'POST',
-            url     : '../testing/target.html',
+            url     : 'http://localhost:8000/target.html',
             data    : formData,
             dataType: 'json',
-            encode  : true
+            encode  : true,
+            success: function(data) {
+                ajaxcomplete(data);
+            },
+            error: function(data) {
+                data = '{"verdict": "not working", "likelihood": "high"}';
+                ajaxcomplete(data);
+            }
         }).done(function(data) {
-            console.log(data);
+            
         });
 
         event.preventDefault();
 
     });
+
+    function ajaxcomplete(results) {
+        console.log(results);
+        $('#main-page').hide();
+        $('#result-page').show();
+    }
 });
