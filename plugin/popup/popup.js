@@ -12,15 +12,13 @@ $(document).ready(function() {
             data    : formData,
             dataType: 'json',
             encode  : true,
-            success: function(data) {
-                ajaxcomplete(data);
+            success: function(response) {
+                ajaxcomplete(response);
             },
-            error: function(data) {
-                data = '{"verdict": "not working", "likelihood": "high"}';
-                ajaxcomplete(data);
+            error: function(response) {
+                response = '{"verdict": "not working", "likelihood": "high"}';
+                ajaxcomplete(response);
             }
-        }).done(function(data) {
-            
         });
 
         event.preventDefault();
