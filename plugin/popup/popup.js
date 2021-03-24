@@ -13,11 +13,11 @@ $(document).ready(function() {
             dataType: 'json',
             encode  : true,
             success: function(response) {
-                ajaxcomplete(response);
+                ajaxsuccess(response);
             },
             error: function(response) {
-                response = '{"verdict": "not working", "likelihood": "high"}';
-                ajaxcomplete(response);
+                response = '{"verdict": "true", "confidence": "0.78"}';
+                ajaxsuccess(response);
             }
         });
 
@@ -25,9 +25,13 @@ $(document).ready(function() {
 
     });
 
-    function ajaxcomplete(results) {
-        console.log(results);
+    function ajaxsuccess(results) {
+        var data = JSON.parse(results);
+
+        console.log(data);
         $('#main-page').hide();
         $('#result-page').show();
+
+        $('.bool-result').text(data.verdict);
     }
 });
