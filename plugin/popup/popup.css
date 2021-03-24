@@ -1,5 +1,5 @@
 html, body {
-    width: 400px;
+    width: 300px;
 }
 
 body {
@@ -36,4 +36,16 @@ button {
     cursor: pointer;
     background-color: white;
     border-radius: 3px;
+}
+
+.title {
+    text-align: center;
+}
+
+/* Center align stuff for submit button */
+.wrapper {
+    text-align: center;
+}
+#artcile_submit {
+    display: absolute;
 }
