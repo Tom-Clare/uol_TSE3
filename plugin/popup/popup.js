@@ -16,7 +16,7 @@ $(document).ready(function() {
                 ajaxsuccess(response);
             },
             error: function(response) {
-                response = '{"verdict": "true", "confidence": "0.78"}';
+                response = '{"verdict": "true", "confidence": "0.1"}';
                 ajaxsuccess(response);
             }
         });
@@ -32,6 +32,14 @@ $(document).ready(function() {
         $('#main-page').hide();
         $('#result-page').show();
 
-        $('.bool-result').text(data.verdict);
+        if (data.verdict == 'true') {
+            $('.bool-result').html("This news is <b>likely</b> to be true.");
+        }
+        else if(data.verdict == 'false') {
+            $('.bool-result').html("This news is <b>likely</b> to be false.");
+        }
+        var displayPercentage = 'p' + data.confidence*100;
+        $('.percentage-replace').addClass(displayPercentage);
+        $('.number-replace').text(data.confidence*100 + "%");
     }
 });

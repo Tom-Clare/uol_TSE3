@@ -7,6 +7,15 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h2 {
+    text-align: center;
+}
+
+.bool-result {
+    text-align: center;
+    margin: 1em 0;
+}
+
 .hidden {
     display: none;
 }
