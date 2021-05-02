@@ -8,7 +8,7 @@ $(document).ready(function() {
 
         $.ajax({
             type    : 'POST',
-            url     : 'http://localhost:8000/target.html',
+            url     : 'http://localhost:5000/target',
             data    : formData,
             dataType: 'json',
             encode  : true,
@@ -26,20 +26,13 @@ $(document).ready(function() {
     });
 
     function ajaxsuccess(results) {
-        var data = JSON.parse(results);
-
-        console.log(data);
+        console.log(results);
         $('#main-page').hide();
         $('#result-page').show();
 
-        if (data.verdict == 'true') {
-            $('.bool-result').html("This news is <b>likely</b> to be true.");
-        }
-        else if(data.verdict == 'false') {
-            $('.bool-result').html("This news is <b>likely</b> to be false.");
-        }
-        var displayPercentage = 'p' + data.confidence*100;
+        $('#result-single').html(results.verdict)
+        var displayPercentage = 'p' + results.confidence*100;
         $('.percentage-replace').addClass(displayPercentage);
-        $('.number-replace').text(data.confidence*100 + "%");
+        $('.number-replace').text(results.confidence*100 + "%");
     }
 });
