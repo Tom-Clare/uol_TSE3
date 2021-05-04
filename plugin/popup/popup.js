@@ -31,8 +31,9 @@ $(document).ready(function() {
         $('#result-page').show();
 
         $('#result-single').html(results.verdict)
-        var displayPercentage = 'p' + results.confidence*100;
+        var confidence = parseFloat(results.confidence)
+        var displayPercentage = 'p' + confidence*100;
         $('.percentage-replace').addClass(displayPercentage);
-        $('.number-replace').text(results.confidence*100 + "%");
+        $('.number-replace').text(confidence*100 + "%");
     }
 });

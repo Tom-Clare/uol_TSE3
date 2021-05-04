@@ -48,14 +48,15 @@ Reaching out with one of her eight arms, each covered in sensitive suckers, a tr
 """
 
 
-def ConvertToArray(data):
+def convertToArray(data):
     return [data.replace("/n", "")]
 
-def Scan(data):
+def scan(data):
     vectorized_input_data = tfidf_vectorizer.transform(data)
     prediction = pac.predict(vectorized_input_data)
     print(prediction)
     return prediction
+
 
 #Read the data
 df=pd.read_csv('news.csv')
@@ -80,8 +81,7 @@ pac=PassiveAggressiveClassifier(max_iter=50)
 pac.fit(tfidf_train,y_train)
 #DataFlair - Predict on the test set and calculate accuracy
 y_pred=pac.predict(tfidf_test)
-score=accuracy_score(y_test,y_pred)
-print(f'Accuracy: {round(score*100,2)}%')
 
-Scan(ConvertToArray(article_true))
-Scan(ConvertToArray(article_false))
+def getScore():
+    return float(accuracy_score(y_test,y_pred))
+
