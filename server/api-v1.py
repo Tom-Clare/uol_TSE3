@@ -6,12 +6,13 @@ app = Flask(__name__)
 def login():
     response = Response()
     response.headers["Access-Control-Allow-Origin"] = "*"
-    response.set_data('{"verdict": "true", "confidence": "0.92"}') #example
+    
 
     #result = "pulls the result from the algorithm"
     #result could be formatted as a list
     #return "returns desired string format for the json"
-
+    
+    response.set_data('{"verdict": "true", "confidence": "0.92"}') #example
     return response
 
 def find_results():
