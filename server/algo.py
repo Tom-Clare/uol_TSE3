@@ -47,16 +47,26 @@ An intelligent and inquisitive being (it has the largest brain-to-body ratio for
 Reaching out with one of her eight arms, each covered in sensitive suckers, a tree octopus might grab a branch to pull herself along in a form of locomotion called tentaculation; or she might be preparing to strike at an insect or small vertebrate, such as a frog or rodent, or steal an egg from a bird's nest; or she might even be examining some object that caught her fancy, instinctively desiring to manipulate it with her dexterous limbs (really deserving the title "sensory organs" more than mere "limbs",) in order to better know it.
 """
 
-
+#Converts string into an array
+#Will return None type if data is not a string
 def convertToArray(data):
-    return [data.replace("/n", "")]
+    #Check if the data passeed is a string
+    if (type(data) == str){ 
+        return [data.replace("/n", "")]
+    }
+    return None
 
+#Takes an array and checks it against the bot
 def scan(data):
+    #Transform the data set
     vectorized_input_data = tfidf_vectorizer.transform(data)
+    #Predict on the data set and calculate the accuracy
     prediction = pac.predict(vectorized_input_data)
+    #Display and return the prediction
     print(prediction)
     return prediction
 
+#-------TRAIN THE BOT FIRST-------
 
 #Read the data
 df=pd.read_csv('news.csv')
@@ -64,22 +74,22 @@ df=pd.read_csv('news.csv')
 df.shape
 df.head()
 
-#DataFlair - Get the labels
+#Get the labels
 labels=df.label
 labels.head()
 
-#DataFlair - Split the dataset
+#Split the dataset
 x_train,x_test,y_train,y_test=train_test_split(df['text'], labels, test_size=0.2, random_state=7)
 
 tfidf_vectorizer=TfidfVectorizer(stop_words='english', max_df=0.7)
-#DataFlair - Fit and transform train set, transform test set
+#Fit and transform train set, transform test set
 tfidf_train=tfidf_vectorizer.fit_transform(x_train) 
 tfidf_test=tfidf_vectorizer.transform(x_test)
 
-#DataFlair - Initialize a PassiveAggressiveClassifier
+#Initialize a PassiveAggressiveClassifier
 pac=PassiveAggressiveClassifier(max_iter=50)
 pac.fit(tfidf_train,y_train)
-#DataFlair - Predict on the test set and calculate accuracy
+#Predict on the test set and calculate accuracy
 y_pred=pac.predict(tfidf_test)
 
 def getScore():
