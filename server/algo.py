@@ -58,6 +58,11 @@ def convertToArray(data):
 
 #Takes an array and checks it against the bot
 def scan(data):
+    #If the data passed is not a list
+    if (type(data) != list){
+        print("Scan was not passed a list data type")
+        return None
+    }
     #Transform the data set
     vectorized_input_data = tfidf_vectorizer.transform(data)
     #Predict on the data set and calculate the accuracy
