@@ -54,6 +54,9 @@ def convertToArray(data):
     if (type(data) == str){ 
         return [data.replace("/n", "")]
     }
+    else if (type(data) == str){
+        return data;
+    }
     return None
 
 #Takes an array and checks it against the bot
