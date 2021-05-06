@@ -54,7 +54,8 @@ def convertToArray(data):
     if (type(data) == str){ 
         return [data.replace("/n", "")]
     }
-    else if (type(data) == str){
+    #Check if the data passed is already an array
+    else if (type(data) == list){
         return data;
     }
     return None
