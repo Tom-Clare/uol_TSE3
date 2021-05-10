@@ -51,22 +51,21 @@ Reaching out with one of her eight arms, each covered in sensitive suckers, a tr
 #Will return None type if data is not a string
 def convertToArray(data):
     #Check if the data passeed is a string
-    if (type(data) == str){ 
+    if (type(data) == str):
         return [data.replace("/n", "")]
-    }
     #Check if the data passed is already an array
-    else if (type(data) == list){
-        return data;
-    }
+    elif (type(data) == list):
+        return data
+    
     return None
 
 #Takes an array and checks it against the bot
 def scan(data):
     #If the data passed is not a list
-    if (type(data) != list){
+    if (type(data) != list):
         print("Scan was not passed a list data type")
         return None
-    }
+    
     #Transform the data set
     vectorized_input_data = tfidf_vectorizer.transform(data)
     #Predict on the data set and calculate the accuracy
