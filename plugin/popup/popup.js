@@ -1,8 +1,14 @@
 $(document).ready(function() {
 
     $("#article_form").submit(function(event) {
+        var content = $('input[name=article_content]').val();
+        if (content == "") {
+            showerror("Please include the article content.")
+            event.preventDefault();
+            return;
+        }
+
         var formData = {
-            'title' : $('input[name=article_title]').val(),
             'content' : $('input[name=article_content]').val(),
         };
 
@@ -15,9 +21,9 @@ $(document).ready(function() {
             success: function(response) {
                 ajaxsuccess(response);
             },
-            error: function(response) {
-                response = '{"verdict": "true", "confidence": "0.1"}';
-                ajaxsuccess(response);
+            error: function() {
+                console.log("We could not reach the server at this time");
+                showerror("We could not reach the server at this time");
             }
         });
 
@@ -36,4 +42,19 @@ $(document).ready(function() {
         $('.percentage-replace').addClass(displayPercentage);
         $('.number-replace').text(confidence*100 + "%");
     }
+
+    function showerror(errortext) {
+        console.log(errortext);
+        $('#error-area').html(errortext);
+    }
+
+    function hideerror() {
+        $('#error-area').html("");
+    }
+    
+    $('input[name=article_content]').on('input', function() {
+        if($(this).val() != '') {
+            hideerror();
+        }
+    });
 });

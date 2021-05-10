@@ -59,3 +59,7 @@ button {
 #artcile_submit {
     display: absolute;
 }
+
+#error-area {
+    color: #ff0000;
+}
