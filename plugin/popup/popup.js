@@ -14,7 +14,7 @@ $(document).ready(function() {
 
         $.ajax({
             type    : 'POST',
-            url     : 'http://localhost:5000/target',
+            url     : 'http://ec2-18-130-208-115.eu-west-2.compute.amazonaws.com:5000/target',
             data    : formData,
             dataType: 'json',
             encode  : true,

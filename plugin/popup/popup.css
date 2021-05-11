@@ -1,5 +1,5 @@
 html, body {
-    width: 300px;
+    width: 400px;
 }
 
 body {
@@ -21,10 +21,9 @@ h2 {
     display: none;
 }
 
-
 .field-input {
     display: block;
-    width: 100%;
+    width: 91%;
     margin: 0.5em 0em;
     border-radius: 3px;
     padding: 0.2em;
@@ -35,7 +34,7 @@ h2 {
 
 .field-input,
 button {
-    border: 1px solid purple;
+    border: 1px solid #307bbb;
     padding: 0.3em;
 }
 
@@ -46,10 +45,6 @@ button {
     cursor: pointer;
     background-color: white;
     border-radius: 3px;
-}
-
-.title {
-    text-align: center;
 }
 
 /* Center align stuff for submit button */
