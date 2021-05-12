@@ -51,7 +51,8 @@ Reaching out with one of her eight arms, each covered in sensitive suckers, a tr
 #Will return None type if data is not a string
 def convertToArray(data):
     #Check if the data passeed is a string
-    if (type(data) == str):
+    if (type(data) == str or type(data) == int):
+        data = "{0}".format(data)
         return [data.replace("/n", "")]
     #Check if the data passed is already an array
     elif (type(data) == list):
